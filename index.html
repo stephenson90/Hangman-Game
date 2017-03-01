@@ -1,9 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 <head>
-	<title></title>
+<meta charset="utf-8">
+	<title> Hangman Game</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Sirin+Stencil" rel="stylesheet"> 
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 </head>
+
 <body>
 
+
+<div class="page-header header">
+  <h1>WELCOME TO HANGMAN ISLAND </h1>
+</div>
+
+<div class="background">
+
+<div class="row">
+  <div class="col-xs-6 col-md-3 ready">
+    <a href="#" class="thumbnail">
+      <img src="assets/images/are-you-ready-resize.jpeg" class="sizing" alt="...">
+    </a>
+  </div>
+
+  <div class="col-xs-6 col-md-3 ready right" >
+    <a href="#" class="thumbnail">
+      <img src="assets/images/hang-294x300.jpg" class="sizing" alt="...">
+    </a>
+  </div>
+  
+</div>
+	
+</div>
+<div>
+	<img src="assets/images/american sticker.jpg" class="left border">
+	<h1 class="bborder"> Let's Go<br>
+		Win or Hang!!!!!!!
+	</h1>
+
+	</div>
+
+<div> 
+<button onclick = "wordSelect()" class = "nav nav-pills start"> Click Here to Begin</button>
+
+<div>
+	<p id="output" class="printOut">
+
+</p>
+
+</div>
+
+	
+</div>
+
+<div class="alert alert-info info" role="alert">
+
+Countdown:
+<p id="count">
+	
+</p>
+Remaining Guesses:
+<p id="remaining">	
+
+</p>
+Score:
+<p id="grade">	
+
+</p>
+
+</div>
+
+  <div class="panel-footer footer">Copyright Jean Davilus 2017</div>
+</div>
+	
+	
+	
+
+
+<script type= "text/javascript" src="assets/javascript/game.js"></script>
 </body>
+
 </html>

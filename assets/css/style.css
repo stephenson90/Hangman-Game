@@ -1,0 +1,103 @@
+.header{
+	clear:both;
+	margin: 5px;
+	color:#4aaaa5;
+	font-family: 'Sirin Stencil', cursive;
+	
+}
+h1{
+	font-size: 66px;
+	text-align: Center
+}
+
+.background{
+		margin: 0px 0 20px 0;
+		background-image: url("../images/1075219-Southern-Haiti-Coast-Line-1.jpg"), url("../images/mountains-landscapes-nature-prince-port-haiti-1920x1080-26545.jpg");
+		background-repeat: no-repeat repeat;
+		height: 100%;
+		width:100%;
+
+}
+
+.ready{
+	float: left;
+	margin-top: 20px;
+
+}
+
+.sizing{
+
+	width: 300px;
+	height: 300px;
+}
+
+.left{
+	float: left;
+
+}
+.right{
+	float: right;
+}
+
+.bborder{
+	border-bottom: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #4aaaa5;
+	padding-bottom: 3px;
+}
+
+.border{
+	padding: 1px;
+	border: 1px solid #eee;
+	width:400px;
+	height: 400px;
+
+}
+
+.hangimg{
+	float: right;
+	margin-top: 40px;
+	position: relative;
+	right: -380px;
+
+}
+
+.footer{
+	position:fixed;
+	min-width: 100%;
+	max-height:40px;
+	bottom: 0px;
+	text-align: center;
+	background-image: url("../images/switzerland_worldtravlr.jpg");
+	color: white;
+	font-size: 16px;
+	margin-top:20px;
+}
+
+.start{
+	padding: 10px;
+	background-image: url(".../images/skull15.jpg"); 
+	color: red;
+	margin-left: 340px;
+	font-size: 20px;
+
+
+
+}
+
+.printOut{
+	font-size: 60px;
+	position:relative;
+	top:20px;
+	left:20px;
+	letter-spacing: 20px;
+	text-align: center;
+}
+
+.info{
+	clear: both;
+	position:relative;
+	top:-1px;
+	font-size: 19px;
+	text-align: center;
+}
