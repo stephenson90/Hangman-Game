@@ -1,18 +1,23 @@
 .header{
+
 	clear:both;
 	margin: 5px;
-	color:#4aaaa5;
+	color:#4aaaa5; 
 	font-family: 'Sirin Stencil', cursive;
+	background-image: url("../images/b3.jpg");
+	text-shadow: 5px 3px white;
+
 	
 }
+
 h1{
 	font-size: 66px;
-	text-align: Center
+	text-align: center;
 }
 
 .background{
 		margin: 0px 0 20px 0;
-		background-image: url("../images/1075219-Southern-Haiti-Coast-Line-1.jpg"), url("../images/mountains-landscapes-nature-prince-port-haiti-1920x1080-26545.jpg");
+		background-image: url("../images/Beach-Haiti.jpg"), url("../images/41.jpg");
 		background-repeat: no-repeat repeat;
 		height: 100%;
 		width:100%;
@@ -76,7 +81,7 @@ h1{
 
 .start{
 	padding: 10px;
-	background-image: url(".../images/skull15.jpg"); 
+	background-image: url("../images/b1.jpg"); 
 	color: red;
 	margin-left: 340px;
 	font-size: 20px;
@@ -99,5 +104,13 @@ h1{
 	position:relative;
 	top:-1px;
 	font-size: 19px;
+	text-align: center;
+	color:red;
+	width: 100%;
+}
+
+.try{
+	
+	border: 5px solid yellow;
 	text-align: center;
 }

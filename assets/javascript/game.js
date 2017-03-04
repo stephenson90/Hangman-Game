@@ -1,5 +1,5 @@
 
-var geography=["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia",
+var geography = ["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia",
 "Australia","Austria","Azerbaijan","Bahrain","Bangladesh","Barbados ","Belarus","Belgium","Belize","Benin","Bhutan",
 "Bolivia","Bosnia and Herzegovina","Botswana ","Brazil","Brunei ","Bulgaria","Burkina Faso ","Burma","Burundi ",
 "Cambodia","Cameroon","Canada","Cape Verde","Central African Republic","Chad","Chile","China","Colombia","Comoros",
@@ -48,7 +48,7 @@ var geography=["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and
 "Annapolis","Montpelier","Boston","Richmond","Lansing","Olympia","St. Paul","Charleston","Jackson","Madison",
 "Jefferson City","Cheyenne"];
 
-var sports=[ "croquet","motor boating","polo","tug-of-war","plunge for distance","underwater swimming","obstacle race for swimming",
+var sports = [ "croquet","motor boating","polo","tug-of-war","plunge for distance","underwater swimming","obstacle race for swimming",
 "cricket","lacrosse","jeu de paume","racquets","squash","wakeboard","wushu","dancing","bowling","netball","baseball ",
 "softball","karate","roller sport","climbing","surfing","rugby union","archery","badminton","basketball","beach volleyball",
 "boxing","canoe","kayak","climbing","cycling","track","road","mountain","BMX","diving","equestrian","dressage",
@@ -56,7 +56,7 @@ var sports=[ "croquet","motor boating","polo","tug-of-war","plunge for distance"
 "rugby 7s","sailing","shooting","soccer","football","swimming","synchronized swimming","table tennis","taekwondo",
 "tennis","track and field","triathlon","volleyball","water polo","weightlifting","wrestling"];
 
-var general=["Pencil stylus","Rock the vote","Cheese Potato","Tomato soup","Ace of Spades","Ipod touch","Clothes Hanger",
+var general = ["Pencil stylus","Rock the vote","Cheese Potato","Tomato soup","Ace of Spades","Ipod touch","Clothes Hanger",
 "Wrestling Match","Think Tank","Computer virus","hot Plate","Trash Can","Golden Globe","Lacrosse Stick","Electric Lamp",
 "Green Peas","Peach and Mango","Quesada","Couch potato","vertical Plane","Stretcher","Folding Chair","Pressure Cooker",
 "Hot Soup","Bullet proof","police Siren","Katana","Sushi place","The Notebook","House for sale","Butter Knife",
@@ -81,44 +81,146 @@ var general=["Pencil stylus","Rock the vote","Cheese Potato","Tomato soup","Ace 
 "Chris Rock","Bill Maher","Colin Kaepernick","Mahatma Gandhi","Greg Popovich","Lebron James","Steph Curry","Steve Kerr",
 "Dwayne Wade","Jackie Robinson","Muhammad Ali","Jesse Owens","Rosa Parks","Tim Duncan","Michael Bennett","Stevie Wonder"];
 
-var selection;
 
+var selection;
+var playerInput;
+var wrongGuess = [];
+var charPos = [];
+var charLeft;
+var wordToGuess;
+var remainingGuess;
+var score = 0;
+
+
+//selecting a random word from one of the 3 matrices.
 function wordSelect(){
 
-var groupArray = [1, 2, 3];
+	var groupArray = [1, 2, 3];
 
 
-var groupSelect= Math.floor(Math.random()*groupArray.length);
+	var groupSelect= Math.floor(Math.random()*groupArray.length);
 
-if(groupSelect=== 3){
-var selection = general[Math.floor(Math.random()*general.length)];
+	if(groupSelect=== 3){
+
+ 			selection = general[Math.floor(Math.random()*general.length)];
+		}
+
+		else if(groupSelect===2){
+	 		selection =  sports[Math.floor(Math.random()*sports.length)];
+			}
+
+			else{
+	 			selection = geography[Math.floor(Math.random()*geography.length)];
+				}
+
+
+	for(var i=0; i < selection.length; i++){
+		//var wordToGuess= selection.replace(selection.charAt(i), "-");
+		wordToGuess= selection.replace(/./gi, "-");
+
+		}
+
+	 remainingGuess = selection.length;
+	 score = 0;
+	
+
+	console.log(wordToGuess);
+	console.log(selection);
+	console.log(remainingGuess);
+	document.getElementById('output').innerHTML = wordToGuess;	
+	document.getElementById('remaining').innerHTML = remainingGuess;
+	document.getElementById('grade').innerHTML = score;
+	
+	}
+// getting letters from the user
+function userInput(){
+
+			document.onkeyup = function(event) {
+				var playerGuess = event.key; 
+				playerInput = playerGuess;
+
+			}		
+			console.log(playerInput);
+
+			
+			}
+		
+
+function game(){
+
+	// getting the data from user	
+	userInput();
+	wordSelect();
+
+	console.log(playerInput);
+	
+
+		//set the # of characters to guess by player = to the # of characters of the word selected by PC
+		charLeft = selection.length;
+
+		//Player win when there is no more character to guess
+		if((charLeft === 0 && remainingGuess>0)|| (charLeft === 0 && remainingGuess===0)){
+			alert(" You guess right");
+			score++;
+			wordSelect();
+
+		}
+
+		//Player looses when there is no remaining chances left
+		else if(charLeft>0 && remainingGuess===0){
+
+			alert("Alert Alert Looser spotted. Hang The Looser");
+			wordSelect();
+
+		}
+
+
+		// Player will enter a character when there are chances left and they have not guessed all the chars.
+		else if( charLeft > 0 && remainingGuess > 0){
+
+		// We will ask the player to guess the characters a # of times = to the # of characters in the word selected
+		for(var i=0; i<selection.length; i++){			
+
+			
+			//We will compare the character entered by player to each of the characters of the selecter word
+			for(var j = 0; j<selection.length; j++){
+
+				if(playerInput === selection.charAt(j)){
+				charPos.push(j);
+				console.log(charPos);
+				//we are replacing the correct character selected by the player in its correct position
+				var rightGuess = wordToGuess.replace(j, playerInput);
+				wordToGuess = rightGuess;
+				document.getElementById('newOutput').innerHTML = wordToGuess;
+				charLeft--;
+				
+							
+				}
+
+				else{
+					wrongGuess.push(playerInput);
+
+					continue;
+				}
+
+				remainingGuess--;
+				console.log(charLeft);
+				console.log(remainingGuess);
+
+
+			}
+
+				
+		 
+		
+		}
+
+		}
 }
-
-else if(groupSelect===2){
-	var selection =  sports[Math.floor(Math.random()*sports.length)];
-}
-
-else{
-	var selection = geography[Math.floor(Math.random()*geography.length)];
-}
+	
 
 
-for(var i=0; i<selection.length; i++){
-	//var wordToGuess= selection.replace(selection.charAt(i), "-");
-	var wordToGuess= selection.replace(/./gi, "-");
 
-}
 
-var remainingGuess= selection.length;
-var score= 0;
-var countdown=selection.length;
-
-console.log(wordToGuess);
-document.getElementById('output').innerHTML = wordToGuess;
-document.getElementById('count').innerHTML = countdown;
-document.getElementById('remaining').innerHTML = remainingGuess;
-document.getElementById('grade').innerHTML = score;
-
-}
 
 
