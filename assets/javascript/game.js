@@ -127,42 +127,107 @@ function wordSelect(){
 	console.log(wordToGuess);
 	console.log(selection);
 	console.log(remainingGuess);
-	document.getElementById('output').innerHTML = wordToGuess;	
-	document.getElementById('remaining').innerHTML = remainingGuess;
-	document.getElementById('grade').innerHTML = score;
+	
+	
 	
 	}
 // getting letters from the user
-function userInput(){
-
-			document.onkeyup = function(event) {
-				var playerGuess = event.key; 
-				playerInput = playerGuess;
-
-			}		
-			console.log(playerInput);
+function userInput(){	
 
 			
+				var playerGuess = prompt("Please guess a letter") 
+				playerInput = playerGuess;
+
 			}
+
+function theGame(){
+			var countRightChar=0;
+			wordSelect();
+			userInput();					
+			console.log(playerInput);
+			console.log(remainingGuess);
+
+
+			//set the # of characters to guess by player = to the # of characters of the word selected by PC
+		charLeft = selection.length;
+		console.log(charLeft);
+
+
+		// Player will enter a character when there are chances left and they have not guessed all the chars.
+	
+		var posCount=0;
+
+
+		if( charLeft > 0 && remainingGuess > 0){
+
+			console.log(charLeft);
+			console.log(remainingGuess);
+
+			// We will ask the player to guess the characters a # of times = to the # of characters in the word selected
+						
+			//We will compare the character entered by player to each of the characters of the selecter word
+			
+			for(var j = 0; j<selection.length; j++){
+
+				if(playerInput === selection.charAt(j)){
+				charPos.push(j);
+				console.log(charPos);
+				//we are replacing the correct character selected by the player in its correct position
+				var rightGuess = wordToGuess.replace(wordToGuess.charAt(j), playerInput);
+				wordToGuess = rightGuess;
+				console.log(wordToGuess);
+				document.getElementById('newOutput').innerHTML = wordToGuess;
+				charLeft--;
+				countRightChar++;
+				
+							
+				}
+
+				else{
+					wrongGuess.push(playerInput);
+					
+
+
+					continue;
+				}
+
+		if(countRightChar===0){
+
+
+					document.getElementById("blahGuess").innerHTML = "Not a good guess";
+					document.getElementById("badGuess").innerHTML = wrongGuess;
+					document.getElementById('newOutput').innerHTML = wordToGuess;
+		}
+
+		else{
+			document.getElementById('cheer').innerHTML= "Great Guess";
+
+
+		}
+				
+				console.log(charLeft);
+				console.log(remainingGuess);
+
+
+				}
+
+					userInput();
+					remainingGuess--;
+			}
+
+				 
+		
 		
 
-function game(){
-
-	// getting the data from user	
-	userInput();
-	wordSelect();
-
-	console.log(playerInput);
-	
-
-		//set the # of characters to guess by player = to the # of characters of the word selected by PC
-		charLeft = selection.length;
+		
 
 		//Player win when there is no more character to guess
-		if((charLeft === 0 && remainingGuess>0)|| (charLeft === 0 && remainingGuess===0)){
-			alert(" You guess right");
+		else if((charLeft === 0 && remainingGuess>0)|| (charLeft === 0 && remainingGuess===0)){
+			alert(" You win!!!!!");
 			score++;
 			wordSelect();
+
+			remainingGuess = 0;
 
 		}
 
@@ -175,48 +240,91 @@ function game(){
 		}
 
 
-		// Player will enter a character when there are chances left and they have not guessed all the chars.
-		else if( charLeft > 0 && remainingGuess > 0){
+		else{
 
-		// We will ask the player to guess the characters a # of times = to the # of characters in the word selected
-		for(var i=0; i<selection.length; i++){			
+
+		}
 
 			
-			//We will compare the character entered by player to each of the characters of the selecter word
-			for(var j = 0; j<selection.length; j++){
+		
 
-				if(playerInput === selection.charAt(j)){
-				charPos.push(j);
-				console.log(charPos);
-				//we are replacing the correct character selected by the player in its correct position
-				var rightGuess = wordToGuess.replace(j, playerInput);
-				wordToGuess = rightGuess;
-				document.getElementById('newOutput').innerHTML = wordToGuess;
-				charLeft--;
+		document.getElementById('output').innerHTML = wordToGuess;	
+	document.getElementById('remaining').innerHTML = remainingGuess;
+	document.getElementById('grade').innerHTML = score;
+	}
+		
+
+// function game(){
+
+// 	// getting the data from user	
+// 	userInput();
+// 	wordSelect();
+
+// 	console.log(playerInput);
+	
+
+// 		//set the # of characters to guess by player = to the # of characters of the word selected by PC
+// 		charLeft = selection.length;
+
+// 		//Player win when there is no more character to guess
+// 		if((charLeft === 0 && remainingGuess>0)|| (charLeft === 0 && remainingGuess===0)){
+// 			alert(" You guess right");
+// 			score++;
+// 			wordSelect();
+
+// 		}
+
+// 		//Player looses when there is no remaining chances left
+// 		else if(charLeft>0 && remainingGuess===0){
+
+// 			alert("Alert Alert Looser spotted. Hang The Looser");
+// 			wordSelect();
+
+// 		}
+
+
+// 		// Player will enter a character when there are chances left and they have not guessed all the chars.
+// 		else if( charLeft > 0 && remainingGuess > 0){
+
+// 		// We will ask the player to guess the characters a # of times = to the # of characters in the word selected
+// 		for(var i=0; i<selection.length; i++){			
+
+			
+// 			//We will compare the character entered by player to each of the characters of the selecter word
+// 			for(var j = 0; j<selection.length; j++){
+
+// 				if(playerInput === selection.charAt(j)){
+// 				charPos.push(j);
+// 				console.log(charPos);
+// 				//we are replacing the correct character selected by the player in its correct position
+// 				var rightGuess = wordToGuess.replace(j, playerInput);
+// 				wordToGuess = rightGuess;
+// 				document.getElementById('newOutput').innerHTML = wordToGuess;
+// 				charLeft--;
 				
 							
-				}
+// 				}
 
-				else{
-					wrongGuess.push(playerInput);
+// 				else{
+// 					wrongGuess.push(playerInput);
 
-					continue;
-				}
+// 					continue;
+// 				}
 
-				remainingGuess--;
-				console.log(charLeft);
-				console.log(remainingGuess);
+// 				remainingGuess--;
+// 				console.log(charLeft);
+// 				console.log(remainingGuess);
 
 
-			}
+// 			}
 
 				
 		 
 		
-		}
+// 		}
 
-		}
-}
+// 		}
+// }
 	
 
 
