@@ -46,30 +46,28 @@
 
 <div> 
 
-	<button onclick = "theGame()" class = "nav nav-pills start"> Click Here to enter guess</button>
-
-
-	<!--<div class="try">
-
-		<h3> Enter your guess: </h3> <input type="text" name="playerLetter" onkeyup ="userInput()">
-
-		</div> -->
-
+<button onclick = "wordSelect()" class = "nav nav-pills start"> Click Here to select a word</button> </div>
 	<div>
 		<p id="output" class="printOut"> </p>
 
 	</div>
+<div class="mySpace">
+<form id="userInput">
+	<label for="userWord">Enter your guess here</label>
+	<input type="text" name="userWord" class = "nav nav-pills" id="guess"> </input>
+	<input type="submit" onclick="userInput()" name="user" value="Enter" id="start">
+	</form>
 
 	
 </div>
 
 <div class="alert alert-info info" role="alert">
 
-	Remaining Guesses:
-	<p id="remaining">	</p>
+	<p class="printOut2">Remaining Guesses:</p>
+	<p class="printOut2" id="remaining">	</p>
 
-	Score:
-	<p id="grade">	</p>
+	<p class="printOut2">Score: </p>
+	<p id="grade" class="printOut2">	</p>
 	<p id="blahGuess"></p>
 	<p id = "badGuess"></p>
 	<p id = "cheer"> </p>

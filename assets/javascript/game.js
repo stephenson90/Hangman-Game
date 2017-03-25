@@ -82,7 +82,7 @@ var general = ["Pencil stylus","Rock the vote","Cheese Potato","Tomato soup","Ac
 "Dwayne Wade","Jackie Robinson","Muhammad Ali","Jesse Owens","Rosa Parks","Tim Duncan","Michael Bennett","Stevie Wonder"];
 
 
-var selection;
+var selection="";
 var playerInput;
 var wrongGuess = [];
 var charPos = [];
@@ -127,22 +127,25 @@ function wordSelect(){
 	console.log(wordToGuess);
 	console.log(selection);
 	console.log(remainingGuess);
+	document.getElementById('output').innerHTML = wordToGuess;	
+	document.getElementById('remaining').innerHTML = remainingGuess;
+	document.getElementById('grade').innerHTML = score;
 	
 	
 	
 	}
+
 // getting letters from the user
 function userInput(){	
-
 			
-				var playerGuess = prompt("Please guess a letter") 
-				playerInput = playerGuess;
+				var playerGuess = document.getElementById("userInput"); 
+				playerInput = playerGuess.trim();
+				
 
 			}
 
 function theGame(){
 			var countRightChar=0;
-			wordSelect();
 			userInput();					
 			console.log(playerInput);
 			console.log(remainingGuess);
@@ -169,16 +172,19 @@ function theGame(){
 			
 			for(var j = 0; j<selection.length; j++){
 
-				if(playerInput === selection.charAt(j)){
-				charPos.push(j);
-				console.log(charPos);
-				//we are replacing the correct character selected by the player in its correct position
-				var rightGuess = wordToGuess.replace(wordToGuess.charAt(j), playerInput);
-				wordToGuess = rightGuess;
-				console.log(wordToGuess);
-				document.getElementById('newOutput').innerHTML = wordToGuess;
-				charLeft--;
-				countRightChar++;
+				if(playerInput == selection.charAt(j)){
+
+					console.log(selection.charAt(j));	
+					charPos.push(j);
+					console.log(charPos);
+					//we are replacing the correct character selected by the player in its correct position
+					console.log("j"+ j);
+					var rightGuess = wordToGuess.replace("wordToGuess.charAt(j)", playerInput);
+					console.log(rightGuess);
+					wordToGuess = rightGuess;					
+					document.getElementById('newOutput').innerHTML = wordToGuess;
+					charLeft--;
+					countRightChar++;
 				
 							
 				}
@@ -211,7 +217,7 @@ function theGame(){
 
 				}
 
-					userInput();
+					
 					remainingGuess--;
 			}
 
@@ -225,7 +231,7 @@ function theGame(){
 		else if((charLeft === 0 && remainingGuess>0)|| (charLeft === 0 && remainingGuess===0)){
 			alert(" You win!!!!!");
 			score++;
-			wordSelect();
+			
 
 			remainingGuess = 0;
 
@@ -235,7 +241,7 @@ function theGame(){
 		else if(charLeft>0 && remainingGuess===0){
 
 			alert("Alert Alert Looser spotted. Hang The Looser");
-			wordSelect();
+			
 
 		}
 
@@ -248,7 +254,7 @@ function theGame(){
 			
 		
 
-		document.getElementById('output').innerHTML = wordToGuess;	
+	document.getElementById('output').innerHTML = wordToGuess;	
 	document.getElementById('remaining').innerHTML = remainingGuess;
 	document.getElementById('grade').innerHTML = score;
 	}
